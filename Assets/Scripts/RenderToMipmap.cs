@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-[RequireComponent(typeof(Camera))]
 public class RenderToMipmap : MonoBehaviour
 {
     [Range(0, 3)]
@@ -38,18 +37,6 @@ public class RenderToMipmap : MonoBehaviour
         }
     }
 
-    private Camera m_Camera;
-    public Camera camera_
-    {
-        get
-        {
-            if (m_Camera == null)
-                m_Camera = GetComponent<Camera>();
-
-            return m_Camera;
-        }
-    }
-
     private RenderTexture m_Mipmap;
 
     private void RenderFullScreenQuad()
@@ -57,7 +44,6 @@ public class RenderToMipmap : MonoBehaviour
         GL.PushMatrix();
         GL.LoadOrtho();
 
-        //Render the full screen quad manually.
         GL.Begin(GL.QUADS);
         GL.TexCoord2(0.0f, 0.0f); GL.Vertex3(0.0f, 0.0f, 0.1f);
         GL.TexCoord2(1.0f, 0.0f); GL.Vertex3(1.0f, 0.0f, 0.1f);
