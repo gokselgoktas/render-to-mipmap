@@ -25,13 +25,11 @@
     float4 _MainTex_TexelSize;
     float _SourceLevel;
 
-    Varyings vertex(Input input)
+    Varyings vertex(in Input input)
     {
         Varyings output;
 
-        float4 vertex = mul(UNITY_MATRIX_MVP, input.vertex);
-
-        output.vertex = vertex;
+        output.vertex = UnityObjectToClipPos(input.vertex);
         output.uv = input.uv.xy;
 
 #if UNITY_UV_STARTS_AT_TOP
